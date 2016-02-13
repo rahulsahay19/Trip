@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AED2E0B4-3241-41FF-A8D1-33C895565726}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7461FB9B-6555-4A35-9BAD-322B8DCDF1B4}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Trip", "src\Trip\Trip.xproj", "{8B2DC537-24A2-44B6-9117-D93CFF60E346}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B2DC537-24A2-44B6-9117-D93CFF60E346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B2DC537-24A2-44B6-9117-D93CFF60E346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B2DC537-24A2-44B6-9117-D93CFF60E346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B2DC537-24A2-44B6-9117-D93CFF60E346}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8B2DC537-24A2-44B6-9117-D93CFF60E346} = {AED2E0B4-3241-41FF-A8D1-33C895565726}
+	EndGlobalSection
+EndGlobal
