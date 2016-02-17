@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using Trip.Models;
 using Trip.Services;
 using Trip.ViewModels;
 
@@ -13,15 +14,18 @@ namespace Trip.Controllers.Web
     public class AppController : Controller
     {
         private IMailService _mailService;
+        private ITripRepository _tripRepository;
 
-        public AppController(IMailService mailService)
+        public AppController(IMailService mailService, ITripRepository tripRepository)
         {
             _mailService = mailService;
+            _tripRepository = tripRepository;
         }
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View();
+            var trips = _tripRepository.GetTrips();
+            return View(trips);
         }
 
         public ActionResult About()

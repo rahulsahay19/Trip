@@ -1,5 +1,8 @@
 ﻿{
   "AppSettings": {
     "EmailAddress": "something@something.com"
+  },
+  "Data": {
+    "TripContextConnection": "Server=DESKTOP-GVLH746\\SQLEXPRESS;Database=TheTripDb;Trusted_Connection=true;MultipleActiveResultSets=true"
   }
 }

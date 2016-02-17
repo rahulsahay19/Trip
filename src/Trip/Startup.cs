@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
+using Trip.Models;
 using Trip.Services;
 
 namespace Trip
@@ -30,7 +27,15 @@ namespace Trip
         {
             services.AddMvc();
 
+            services.AddLogging();
+            //Adding EF
+            services.AddEntityFramework()
+             .AddSqlServer()
+        .AddDbContext<TripContext>();
+
             //ADDED DI here
+            services.AddTransient<TripContextSeedData>();
+            services.AddScoped<ITripRepository, TripRepository>();
 #if DEBUG
             services.AddScoped<IMailService, MockMailService>();
 #else
@@ -39,8 +44,10 @@ namespace Trip
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, TripContextSeedData seeder, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddDebug(LogLevel.Information);
+
             app.UseStaticFiles();
 
             app.UseMvc(config =>
@@ -52,7 +59,7 @@ namespace Trip
                   );
             });
 
-
+            seeder.SeedData();
         }
 
         // Entry point for the application.

@@ -32,7 +32,7 @@ input[type=text], input[type=password], textarea {
 }*/
 
 .headshot {
-  max-width: 50px;
+  max-width: 250px;
   border: 1px solid #222;
   padding: 3px;
 }
