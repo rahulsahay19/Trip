@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.Logging;
 
-namespace Trip.Models
+namespace WorldTrip.Models
 {
     public class TripRepository : ITripRepository
     {
@@ -17,7 +17,7 @@ namespace Trip.Models
             _logger = logger;
         }
 
-        public IEnumerable<Trip> GetTrips()
+        public IEnumerable<WorldTrip.Models.Trip> GetTrips()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace Trip.Models
             }
         }
 
-        public IEnumerable<Trip> GeTripsWithStops()
+        public IEnumerable<WorldTrip.Models.Trip> GeTripsWithStops()
         {
             try
             {

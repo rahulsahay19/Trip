@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Trip.ViewModels
+namespace WorldTrip.ViewModels
 {
     public class ContactViewModel
     {

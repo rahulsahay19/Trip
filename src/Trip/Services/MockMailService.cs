@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Trip.Services
+namespace WorldTrip.Services
 {
     public class MockMailService : IMailService
     {

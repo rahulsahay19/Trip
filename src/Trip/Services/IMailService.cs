@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Trip.Services
+﻿namespace WorldTrip.Services
 {
   public interface IMailService
   {

@@ -2,10 +2,9 @@ using System;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
-using Microsoft.Data.Entity.Migrations;
-using Trip.Models;
+using WorldTrip.Models;
 
-namespace Trip.Migrations
+namespace WorldTrip.Migrations
 {
     [DbContext(typeof(TripContext))]
     partial class TripContextModelSnapshot : ModelSnapshot

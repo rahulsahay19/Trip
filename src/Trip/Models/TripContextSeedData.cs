@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Trip.Models
+namespace WorldTrip.Models
 {
     public class TripContextSeedData
     {
@@ -18,7 +18,7 @@ namespace Trip.Models
             if (!_context.Trips.Any())
             {
                 //Add New Data
-                var usTrip = new Trip()
+                var usTrip = new WorldTrip.Models.Trip()
                 {
                     Name = "US Trip",
                     Created = DateTime.UtcNow,
@@ -37,7 +37,7 @@ namespace Trip.Models
                 _context.Trips.Add(usTrip);
                 _context.Stops.AddRange(usTrip.Stops);
 
-                var worldTrip = new Trip()
+                var worldTrip = new WorldTrip.Models.Trip()
                 {
                     Name = "World Trip",
                     Created = DateTime.UtcNow,

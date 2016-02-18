@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-namespace Trip.Models
+namespace WorldTrip.Models
 {
     public interface ITripRepository
     {
-        IEnumerable<Trip> GetTrips();
-        IEnumerable<Trip> GeTripsWithStops();
+        IEnumerable<WorldTrip.Models.Trip> GetTrips();
+        IEnumerable<WorldTrip.Models.Trip> GeTripsWithStops();
     }
 }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using Trip.Models;
-using Trip.Services;
-using Trip.ViewModels;
+﻿using Microsoft.AspNet.Mvc;
+using WorldTrip.Models;
+using WorldTrip.Services;
+using WorldTrip.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Trip.Controllers.Web
+namespace WorldTrip.Controllers.Web
 {
     public class AppController : Controller
     {

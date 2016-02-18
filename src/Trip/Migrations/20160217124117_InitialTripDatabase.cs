@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
-using Microsoft.Data.Entity.Migrations;
 using Microsoft.Data.Entity.Metadata;
+using Microsoft.Data.Entity.Migrations;
 
-namespace Trip.Migrations
+namespace WorldTrip.Migrations
 {
     public partial class InitialTripDatabase : Migration
     {

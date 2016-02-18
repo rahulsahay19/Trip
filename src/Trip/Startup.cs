@@ -4,10 +4,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
-using Trip.Models;
-using Trip.Services;
+using Newtonsoft.Json.Serialization;
+using WorldTrip.Models;
+using WorldTrip.Services;
 
-namespace Trip
+namespace WorldTrip
 {
     public class Startup
     {
@@ -25,7 +26,11 @@ namespace Trip
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().
+                AddJsonOptions(opt =>
+                {
+                    opt.SerializerSettings.ContractResolver= new CamelCasePropertyNamesContractResolver();
+                });
 
             services.AddLogging();
             //Adding EF

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Entity;
 
-namespace Trip.Models
+namespace WorldTrip.Models
 {
     public class TripContext :DbContext
     {
@@ -8,7 +8,7 @@ namespace Trip.Models
         {
             Database.EnsureCreated();
         }
-        public DbSet<Trip> Trips { get; set; }
+        public DbSet<WorldTrip.Models.Trip> Trips { get; set; }
         public DbSet<Stop> Stops { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
