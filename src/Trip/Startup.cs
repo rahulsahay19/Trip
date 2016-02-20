@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Newtonsoft.Json.Serialization;
 using WorldTrip.Models;
 using WorldTrip.Services;
+using WorldTrip.ViewModels;
 
 namespace WorldTrip
 {
@@ -54,6 +56,11 @@ namespace WorldTrip
             loggerFactory.AddDebug(LogLevel.Information);
 
             app.UseStaticFiles();
+
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<Trip, TripViewModel>().ReverseMap();
+            });
 
             app.UseMvc(config =>
             {
