@@ -41,8 +41,10 @@ namespace WorldTrip
         .AddDbContext<TripContext>();
 
             //ADDED DI here
+            services.AddScoped<GeoService>();
             services.AddTransient<TripContextSeedData>();
             services.AddScoped<ITripRepository, TripRepository>();
+            
 #if DEBUG
             services.AddScoped<IMailService, MockMailService>();
 #else
@@ -60,6 +62,7 @@ namespace WorldTrip
             Mapper.Initialize(config =>
             {
                 config.CreateMap<Trip, TripViewModel>().ReverseMap();
+                config.CreateMap<Stop, StopViewModel>().ReverseMap();
             });
 
             app.UseMvc(config =>

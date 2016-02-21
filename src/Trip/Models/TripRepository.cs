@@ -25,7 +25,7 @@ namespace WorldTrip.Models
             }
             catch (Exception ex)
             {
-                _logger.LogError("Couldn't fetch trips from database:- {0}",ex);
+                _logger.LogError("Couldn't fetch trips from database:- {0}", ex);
                 return null;
             }
         }
@@ -44,6 +44,31 @@ namespace WorldTrip.Models
                 _logger.LogError("Couldn't fetch trips from database:- {0}", ex);
                 return null;
             }
+        }
+
+        public void AddTrip(Trip vm)
+        {
+            _context.Add(vm);
+        }
+
+        public bool SaveAll()
+        {
+            return _context.SaveChanges() > 0;
+        }
+
+        public Trip GetTripByName(string tripName)
+        {
+            return _context.Trips
+                .Include(t => t.Stops)
+                .FirstOrDefault(t => t.Name == tripName);
+        }
+
+        public void AddStop(string tripName,Stop newStop)
+        {
+            var theTrip = GetTripByName(tripName);
+            newStop.Order = theTrip.Stops.Max(s => s.Order) + 1;
+            theTrip.Stops.Add(newStop);
+            _context.Stops.Add(newStop);
         }
     }
 }
