@@ -134,3 +134,9 @@ input[type=text], input[type=password], textarea {
     }
 
 /*Login CSS ends here*/
+
+
+#map {
+  width: 100%;
+  height: 600px;
+}
