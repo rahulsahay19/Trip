@@ -9,7 +9,8 @@ namespace WorldTrip.Models
         IEnumerable<WorldTrip.Models.Trip> GeTripsWithStops();
         void AddTrip(Trip vm);
         bool SaveAll();
-        Trip GetTripByName(string tripName);
-        void AddStop(string tripName,Stop newStop);
+        Trip GetTripByName(string tripName, string UserName);
+        void AddStop(string tripName, string UserName,Stop newStop);
+        IEnumerable<Trip> GetUserTripsWithStops(string name);
     }
 }

@@ -32,62 +32,105 @@ input[type=text], input[type=password], textarea {
 }*/
 
 .headshot {
-  max-width: 250px;
-  border: 1px solid #222;
-  padding: 3px;
+    max-width: 250px;
+    border: 1px solid #222;
+    padding: 3px;
 }
 
 .menu {
-  font-size: 12px;
+    font-size: 12px;
 }
 
-  .menu li {
-    list-style-type: none;
-  }
-
-    .menu li.active {
-      font-weight: bold;
+    .menu li {
+        list-style-type: none;
     }
 
-    .menu li a {
-      color: #eee;
-    }
+        .menu li.active {
+            font-weight: bold;
+        }
+
+        .menu li a {
+            color: #eee;
+        }
 
 #sidebar {
-  background: #2a2c36;
-  color: #eee;
-  position: fixed;
-  height: 100%;
-  width: 250px;
-  overflow: hidden;
-  left: 0;
-  margin: 0;
-  -moz-transition: left ease .25s;
-  -o-transition: left ease .25s;
-  -webkit-transition: left ease .25s;
-  transition: left ease .25s;
-}
-
-  #sidebar.hide-sidebar {
-    left: -250px;
+    background: #2a2c36;
+    color: #eee;
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    overflow: hidden;
+    left: 0;
+    margin: 0;
     -moz-transition: left ease .25s;
     -o-transition: left ease .25s;
     -webkit-transition: left ease .25s;
     transition: left ease .25s;
-  }
-
-#wrapper {
-  margin: 0 0 0 250px;
-  -moz-transition: margin-left ease .25s;
-  -o-transition: margin-left ease .25s;
-  -webkit-transition: margin-left ease .25s;
-  transition: margin-left ease .25s;
 }
 
-  #wrapper.hide-sidebar {
-    margin-left: 0;
+    #sidebar.hide-sidebar {
+        left: -250px;
+        -moz-transition: left ease .25s;
+        -o-transition: left ease .25s;
+        -webkit-transition: left ease .25s;
+        transition: left ease .25s;
+    }
+
+#wrapper {
+    margin: 0 0 0 250px;
     -moz-transition: margin-left ease .25s;
     -o-transition: margin-left ease .25s;
     -webkit-transition: margin-left ease .25s;
     transition: margin-left ease .25s;
-  }
+}
+
+    #wrapper.hide-sidebar {
+        margin-left: 0;
+        -moz-transition: margin-left ease .25s;
+        -o-transition: margin-left ease .25s;
+        -webkit-transition: margin-left ease .25s;
+        transition: margin-left ease .25s;
+    }
+
+/*Login CSS*/
+
+.white {
+    color: #000;
+    background-color: #fff;
+}
+
+.btn-facebook {
+    color: #ffffff;
+    -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #2b4b90;
+    *background-color: #133783;
+    background-image: -moz-linear-gradient(top, #3b5998, #133783);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3b5998), to(#133783));
+    background-image: -webkit-linear-gradient(top, #3b5998, #133783);
+    background-image: -o-linear-gradient(top, #3b5998, #133783);
+    background-image: linear-gradient(to bottom, #3b5998, #133783);
+    background-repeat: repeat-x;
+    border-color: #133783 #133783 #091b40;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3b5998', endColorstr='#ff133783', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+    .btn-facebook:hover,
+    .btn-facebook:focus,
+    .btn-facebook:active,
+    .btn-facebook.active,
+    .btn-facebook.disabled,
+    .btn-facebook[disabled] {
+        color: #ffffff;
+        background-color: #133783 !important;
+        *background-color: #102e6d !important;
+    }
+
+    .btn-facebook:active,
+    .btn-facebook.active {
+        background-color: #0d2456 \9 !important;
+    }
+
+/*Login CSS ends here*/

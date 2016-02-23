@@ -1,6 +1,11 @@
-﻿using AutoMapper;
+﻿using System.Net;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNet.Authentication.Cookies;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -29,10 +34,32 @@ namespace WorldTrip
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().
-                AddJsonOptions(opt =>
+            AddJsonOptions(opt =>
+            {
+                opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
+
+            services.AddIdentity<TripUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 7;
+                config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+                config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
                 {
-                    opt.SerializerSettings.ContractResolver= new CamelCasePropertyNamesContractResolver();
-                });
+                    OnRedirectToLogin = ctx =>
+                    {
+                        if (ctx.Request.Path.StartsWithSegments("/api")&&
+                        ctx.Response.StatusCode==(int)HttpStatusCode.OK)
+                        {
+                            ctx.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                        }
+                        else {
+                            ctx.Response.Redirect(ctx.RedirectUri);
+                        }
+                        return Task.FromResult(0);
+                    }
+                };
+            }).AddEntityFrameworkStores<TripContext>();
 
             services.AddLogging();
             //Adding EF
@@ -44,7 +71,7 @@ namespace WorldTrip
             services.AddScoped<GeoService>();
             services.AddTransient<TripContextSeedData>();
             services.AddScoped<ITripRepository, TripRepository>();
-            
+
 #if DEBUG
             services.AddScoped<IMailService, MockMailService>();
 #else
@@ -53,11 +80,13 @@ namespace WorldTrip
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, TripContextSeedData seeder, ILoggerFactory loggerFactory)
+        public async void Configure(IApplicationBuilder app, TripContextSeedData seeder, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddDebug(LogLevel.Information);
 
             app.UseStaticFiles();
+
+            app.UseIdentity();
 
             Mapper.Initialize(config =>
             {
@@ -74,7 +103,7 @@ namespace WorldTrip
                   );
             });
 
-            seeder.SeedData();
+            await seeder.SeedDataAsync();
         }
 
         // Entry point for the application.

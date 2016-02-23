@@ -1,8 +1,10 @@
-﻿using Microsoft.Data.Entity;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Data.Entity;
+using Microsoft.Data.Entity.Storage;
 
 namespace WorldTrip.Models
 {
-    public class TripContext :DbContext
+    public class TripContext :IdentityDbContext<TripUser>
     {
         public TripContext()
         {

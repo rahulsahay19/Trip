@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
 using WorldTrip.Models;
@@ -12,6 +13,7 @@ using WorldTrip.ViewModels;
 
 namespace WorldTrip.Controllers.API
 {
+    [Authorize]
     [Route("api/trip/{tripName}/stop")]
     public class StopController : Controller
     {
@@ -31,7 +33,7 @@ namespace WorldTrip.Controllers.API
         {
             try
             {
-                var results = _tripRepository.GetTripByName(tripName);
+                var results = _tripRepository.GetTripByName(tripName, User.Identity.Name);
 
                 if (results == null)
                 {
@@ -70,7 +72,7 @@ namespace WorldTrip.Controllers.API
                     newStop.Longitude = geoResult.Longitude;
                     newStop.Latitude = geoResult.Latitude;
                     //Saving to the database
-                    _tripRepository.AddStop(tripName, newStop);
+                    _tripRepository.AddStop(tripName, User.Identity.Name, newStop);
 
                     if (_tripRepository.SaveAll())
                     {

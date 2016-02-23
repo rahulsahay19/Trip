@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Mvc;
 using WorldTrip.Models;
 using WorldTrip.Services;
 using WorldTrip.ViewModels;
@@ -20,10 +21,15 @@ namespace WorldTrip.Controllers.Web
         // GET: /<controller>/
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Trips()
+        {
             var trips = _tripRepository.GetTrips();
             return View(trips);
         }
-
         public ActionResult About()
         {
             return View();
